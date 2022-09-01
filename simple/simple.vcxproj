@@ -139,12 +139,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DPSolution.cpp" />
+    <ClCompile Include="GraphSolution.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SimpleSolution.cpp" />
     <ClCompile Include="SimpleSolution.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h" />
+    <ClInclude Include="DPSolution.h" />
+    <ClInclude Include="GraphSolution.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

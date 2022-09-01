@@ -5,10 +5,13 @@
 
 /*
  *	Base 最短路径问题 *
- *  (1) Dijkstra算法
- *  (2) Floyd-Warshall（多源）
+ *	(1) DFS/BFS （两点间最短路径）
+ *  (2) Dijkstra算法 （单源点最短路径）
+ *  (3) Floyd-Warshall（任意两个节点之间的最短路径）
  *  https://www.cnblogs.com/lxt1105/p/6476379.html
 */
+
+vector<int> minDistance_dfs(vector<vector<int>> graph, int v);
 
 
 

@@ -5,6 +5,9 @@
 #include <vector>
 #include <unordered_map>
 
+#define MAX_UNIT 0x7fffffff
+#define MIN_UNIT 0x80000000
+
 using namespace std;
 
 template<typename T>
