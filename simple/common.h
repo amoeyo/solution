@@ -6,6 +6,7 @@
 #include <unordered_map>
 
 #define MAX_UNIT 0x7fffffff
+#define INF 0x7fffffff
 #define MIN_UNIT 0x80000000
 
 using namespace std;
