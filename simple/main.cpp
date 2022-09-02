@@ -1,4 +1,5 @@
 #include "SimpleSolution.h"
+#include "GraphSolution.h"
 
 int main()
 {
@@ -18,14 +19,22 @@ int main()
 	/*
 	 *  graph solution 
 	 */
-
-	vector<vector<int>> graph = {
-		{},
-		{},
-		{}
+	//拓扑排序
+	/*vector<vector<int>> graph = {
+		{1, 0},
+		{2, 0},
+		{3, 1},
+		{3, 2}
 	};
+	int numCourses = 4;
+	vector<int> course = findOrder(numCourses, graph);
+	print<int>(course);*/
 
-
+	//最多参会人数
+	vector<int> favorite = { 2,-1,3,1 };
+	//int len = maximumInvitations(favorite);
+	int len = longestCycle(favorite);
+	cout << len << endl;
 
 	return 0;
 }
