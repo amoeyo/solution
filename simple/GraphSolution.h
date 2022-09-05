@@ -54,7 +54,9 @@ int longestCycle(vector<int>& edges);
   * 最小体力消耗
   * https://leetcode.cn/problems/path-with-minimum-effort/
   * 
-  * dfs?
+  * 如果是允许任意方向的移动，则问题归类为图论
+  * 二分，并查集（Kruskal最小生成树），最短路径
+  * 将格子作为点，将格子之间高度差作为权值
   *
   */
 

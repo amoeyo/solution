@@ -339,69 +339,28 @@ int longestCycle(vector<int>& edges)
 	return maxCircleLen;
 }
 
-int minHeightRes = MAX_UNIT;
-bool flag = false;
 
-void minimunEffortPath_dfs(vector<vector<int>>& heights, int& maxH, int preH, int x, int y)
-{
-	if ((x == heights.size() - 1) && (y == heights[0].size() - 1))
-	{
-		int h = abs(heights[x][y] - preH);
-		if (h > maxH)
-		{
-			maxH = h;
-		}
-
-		if (minHeightRes > maxH)
-		{
-			minHeightRes = maxH;
-		}
-		return;
-	}
-	if (x >= heights.size() || y >= heights[0].size())
-	{
-		return;
-	}
-	if (x < 0 || y < 0)
-	{
-		return;
-	}
-
-	if (heights[x][y] != -1)
-	{
-		int pre_height = heights[x][y];
-		
-		int h = abs(pre_height - preH);
-		if (h > maxH)
-		{
-			maxH = h;
-		}
-		if (maxH > minHeightRes) return;
-
-		heights[x][y] = -1;
-
-		minimunEffortPath_dfs(heights, maxH, pre_height, x + 1, y);
-		minimunEffortPath_dfs(heights, maxH, pre_height, x - 1, y);
-		minimunEffortPath_dfs(heights, maxH, pre_height, x, y + 1);
-		minimunEffortPath_dfs(heights, maxH, pre_height, x, y - 1);
-
-		heights[x][y] = pre_height;
-	}
-	else
-	{
-		return;
-	}
-
-	
-}
 
 int minimumEffortPath(vector<vector<int>>& heights)
 {
 	int rowNum = heights.size();
 	int colNum = heights[0].size();
 	
-	int maxH = -1;
-	minimunEffortPath_dfs(heights, maxH, heights[0][0], 0, 0);
+	int n = rowNum * colNum;
 
-	return minHeightRes;
+	vector<vector<int>> graph(n, vector<int>(n, 0));
+
+	for (int i = 0; i < rowNum; i++)
+	{
+		for (int j = 0; j < colNum; j++)
+		{
+			//(0,0)
+			for (int k = 0; k < rowNum; k++)
+			{
+				for(int )
+			}
+		}
+	}
+
+	return 0;
 }
