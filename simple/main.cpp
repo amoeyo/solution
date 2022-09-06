@@ -49,7 +49,7 @@ int main()
 	cout << dis;*/
 
 	//最小体力消耗
-	vector<vector<int>> heights = {
+	/*vector<vector<int>> heights = {
 		{1,2,2},
 		{3,8,2},
 		{5,3,5}
@@ -57,7 +57,34 @@ int main()
 
 	int minEffort = minimumEffortPath(heights);
 
-	cout << minEffort;
+	cout << minEffort;*/
+
+	/* 不连通的点对数 */
+	/*vector<vector<int>> edges = {
+		{0, 1},
+		{0, 2},
+		{1, 2}
+	};
+
+	int res = countPairs(3, edges);
+	cout << res;*/
+
+	/* 螺旋打印矩阵 */
+	/*vector<vector<int>> heights = {
+		{1,2,3},
+		{4,5,6},
+		{7,8,9}
+	};
+
+	vector<int> res = spiralOrder(heights);
+
+	print(res);*/
+
+	/* 接雨水 */
+	vector<int> nums = { 0,1,0,2,1,0,1,3,2,1,2,1 };
+
+	int rain = trap(nums);
+	cout << rain;
 
 	return 0;
 }

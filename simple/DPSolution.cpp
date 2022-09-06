@@ -64,3 +64,50 @@ int minDistance(string word1, string word2)
     }
     return dp[word_len1][word_len2];
 }
+
+int trap(vector<int>& height)
+{
+    int n = height.size();
+    vector<int> left_highest;
+    vector<int> right_highest;
+    left_highest.assign(height.begin(), height.end());
+    right_highest.assign(height.begin(), height.end());
+
+    int maxH = height[0];
+    for (int i = 1; i < n; i++)
+    {
+        if (height[i] > maxH)
+        {
+            maxH = height[i];
+        }
+        left_highest[i] = maxH;
+    }
+
+    maxH = height[n - 1];
+    for (int i = n - 1; i >= 0; i--)
+    {
+        if (height[i] > maxH)
+        {
+            maxH = height[i];
+        }
+        right_highest[i] = maxH;
+    }
+
+    int res = 0;
+
+    for (int i = 1; i < n - 1; i++)
+    {
+        int high = min(left_highest[i], right_highest[i]);
+        if (high > height[i])
+        {
+            res += high - height[i];
+        }
+    }
+
+    return res;
+}
+
+int cuttingRope(int n)
+{
+
+}

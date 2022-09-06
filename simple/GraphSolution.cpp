@@ -339,61 +339,81 @@ int longestCycle(vector<int>& edges)
 	return maxCircleLen;
 }
 
+long long countPairs(int n, vector<vector<int>>& edges)
+{
+	UF union_set(n);
+	int size = edges.size();
+	for (int i = 0; i < size; i++)
+	{
+		union_set.union_p(edges[i][0], edges[i][1]);
+	}
+
+	long long pair_count = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (union_set.is_parent(i))
+		{
+			pair_count += (long long)union_set.size_n(i) * (n - union_set.size_n(i));
+		}
+	}
+	return pair_count / 2;
+}
+
 int minHeightRes = MAX_UNIT;
 bool flag = false;
 
-void minimunEffortPath_dfs(vector<vector<int>>& heights, int& maxH, int preH, int x, int y)
-{
-	if ((x == heights.size() - 1) && (y == heights[0].size() - 1))
-	{
-		int h = abs(heights[x][y] - preH);
-		if (h > maxH)
-		{
-			maxH = h;
-		}
-
-		if (minHeightRes > maxH)
-		{
-			minHeightRes = maxH;
-		}
-		return;
-	}
-	if (x >= heights.size() || y >= heights[0].size())
-	{
-		return;
-	}
-	if (x < 0 || y < 0)
-	{
-		return;
-	}
-
-	if (heights[x][y] != -1)
-	{
-		int pre_height = heights[x][y];
-		
-		int h = abs(pre_height - preH);
-		if (h > maxH)
-		{
-			maxH = h;
-		}
-		if (maxH > minHeightRes) return;
-
-		heights[x][y] = -1;
-
-		minimunEffortPath_dfs(heights, maxH, pre_height, x + 1, y);
-		minimunEffortPath_dfs(heights, maxH, pre_height, x - 1, y);
-		minimunEffortPath_dfs(heights, maxH, pre_height, x, y + 1);
-		minimunEffortPath_dfs(heights, maxH, pre_height, x, y - 1);
-
-		heights[x][y] = pre_height;
-	}
-	else
-	{
-		return;
-	}
-
-	
-}
+//void minimunEffortPath_dfs(vector<vector<int>>& heights, int& maxH, int preH, int x, int y)
+//{
+//	if ((x == heights.size() - 1) && (y == heights[0].size() - 1))
+//	{
+//		int h = abs(heights[x][y] - preH);
+//		if (h > maxH)
+//		{
+//			maxH = h;
+//		}
+//
+//		if (minHeightRes > maxH)
+//		{
+//			minHeightRes = maxH;
+//		}
+//		return;
+//	}
+//	if (x >= heights.size() || y >= heights[0].size())
+//	{
+//		return;
+//	}
+//	if (x < 0 || y < 0)
+//	{
+//		return;
+//	}
+//
+//	if (heights[x][y] != -1)
+//	{
+//		int pre_height = heights[x][y];
+//		
+//		int h = abs(pre_height - preH);
+//		if (h > maxH)
+//		{
+//			maxH = h;
+//		}
+//		if (maxH > minHeightRes) return;
+//
+//		heights[x][y] = -1;
+//
+//		minimunEffortPath_dfs(heights, maxH, pre_height, x + 1, y);
+//		minimunEffortPath_dfs(heights, maxH, pre_height, x - 1, y);
+//		minimunEffortPath_dfs(heights, maxH, pre_height, x, y + 1);
+//		minimunEffortPath_dfs(heights, maxH, pre_height, x, y - 1);
+//
+//		heights[x][y] = pre_height;
+//	}
+//	else
+//	{
+//		return;
+//	}
+//
+//	
+//}
 
 int minimumEffortPath(vector<vector<int>>& heights)
 {
@@ -401,7 +421,11 @@ int minimumEffortPath(vector<vector<int>>& heights)
 	int colNum = heights[0].size();
 	
 	int maxH = -1;
-	minimunEffortPath_dfs(heights, maxH, heights[0][0], 0, 0);
+
+	int num = rowNum * colNum;
+
+	
+	
 
 	return minHeightRes;
 }
