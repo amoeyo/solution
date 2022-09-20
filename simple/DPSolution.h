@@ -35,6 +35,19 @@ int trap(vector<int>& height);
 
 int cuttingRope(int n);
 
+/*
+ *  兑换零钱
+ *  https://leetcode.cn/problems/coin-change/
+ */
+
+int coinChange(vector<int>& coins, int amount);
+
+/* 括号对数 */
+vector<string> generateParenthesis(int n);
+
+/* 最长公共子序列 */
+int longestCommonSubsequence(string text1, string text2);
+
 
 #endif // !__DPSOLUTION_H__
 
