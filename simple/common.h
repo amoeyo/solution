@@ -5,6 +5,10 @@
 #include <vector>
 #include <unordered_map>
 #include <queue>
+#include <stack>
+#include <algorithm>
+#include <unordered_set>
+#include <map>
 
 #define MAX_UNIT 0x7fffffff
 #define INF 0x7fffffff

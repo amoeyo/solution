@@ -19,8 +19,34 @@ int minDistance(string word1, string word2);
  */
 int lengthOfLIS(vector<int>& nums);
 
+/*
+ *  接雨水
+ *  https://leetcode.cn/problems/trapping-rain-water/
+ *  记录柱子i左边最高的柱子和右边最高的柱子，柱子i可以接的水由两者间较小的那个与柱子i的高度差决定
+ *  dp体现在求left_highest的过程
+ */
+int trap(vector<int>& height);
 
+/*
+ *  剪绳子||
+ * https://leetcode.cn/problems/jian-sheng-zi-ii-lcof/?favorite=xb9nqhhg
+ * 
+ */
 
+int cuttingRope(int n);
+
+/*
+ *  兑换零钱
+ *  https://leetcode.cn/problems/coin-change/
+ */
+
+int coinChange(vector<int>& coins, int amount);
+
+/* 括号对数 */
+vector<string> generateParenthesis(int n);
+
+/* 最长公共子序列 */
+int longestCommonSubsequence(string text1, string text2);
 
 
 #endif // !__DPSOLUTION_H__
