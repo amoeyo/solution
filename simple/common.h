@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <unordered_set>
 #include <map>
+#include <deque>
 
 #define MAX_UNIT 0x7fffffff
 #define INF 0x7fffffff

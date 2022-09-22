@@ -22,6 +22,8 @@ void UT_RemoveDuplicateLetters();
 void UT_SearchRange();
 void UT_TotalFruit();
 void UT_MaxNumber();
+void UT_StrStr();
+void UT_MaxSlidingWindow();
 
 
 

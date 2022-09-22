@@ -492,3 +492,109 @@ int totalFruit(vector<int>& fruits)
     return res;
 
 }
+
+void getNext(vector<int>& next, string& needle)
+{
+    int len = needle.size();
+    next.resize(len + 1);
+    int pre = -1;
+
+    next[0] = pre;
+
+    for (int post = 1; post < len; post++)
+    {
+        while (pre >= 0 && needle[pre + 1] != needle[post])
+        {
+            pre = next[pre];
+        }
+        if (needle[post] == needle[pre + 1])
+        {
+            pre++;
+        }
+        next[post] = pre;
+    }
+}
+
+
+int strStr(string haystack, string needle)
+{
+    int hayLen = haystack.size();
+    int neeLen = needle.size();
+    int res = -1;
+    vector<int> next;
+    getNext(next, needle);
+
+    int needleIndex = -1;
+    for (int i = 0; i < hayLen; i++)
+    {
+        while (needleIndex >= 0 && needle[needleIndex + 1] != haystack[i])
+        {
+            needleIndex = next[needleIndex];
+        }
+        if (needle[needleIndex + 1] == haystack[i])
+        {
+            needleIndex++;
+        }
+        if (needleIndex + 1 >= neeLen)
+        {
+            res = i - neeLen + 1;
+            break;
+        }
+    }
+    return res;
+
+}
+
+vector<int> maxSlidingWindow(vector<int>& nums, int k)
+{
+    vector<int> res;
+    deque<int> num_queue;
+
+    int size = nums.size();
+    //int max_num = nums[0];
+    for (int i = 0; i < k; i++)
+    {
+        while (!num_queue.empty() && nums[i] > num_queue.back())
+        {
+            num_queue.pop_back();
+            
+        }
+        num_queue.push_back(nums[i]);
+    }
+
+    res.push_back(num_queue.front());
+
+    int left = 1;
+    int right = left + k - 1;
+    while (right < size)
+    {
+        if (nums[left - 1] >= num_queue.front())
+        {
+            num_queue.pop_front();
+        }
+        if (nums[right] <= num_queue.front())
+        {
+            while (!num_queue.empty() && num_queue.back() < nums[right])
+            {
+                num_queue.pop_back();
+            }
+            num_queue.push_back(nums[right]);
+        }
+        else
+        {
+            while (!num_queue.empty() && num_queue.front() < nums[right])
+            {
+                num_queue.pop_front();
+            }
+            num_queue.push_back(nums[right]);
+        }
+        res.push_back(num_queue.front());
+
+        left++;
+        right++;
+    }
+
+    return res;
+    
+    
+}

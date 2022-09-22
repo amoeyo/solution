@@ -124,3 +124,20 @@ void UT_MaxNumber()
 	
 	print<int>(res);
 }
+
+void UT_StrStr()
+{
+	string haystack = "leetcode";
+	string needle = "leeto";
+	int res = strStr(haystack, needle);
+	cout << res;
+}
+
+void UT_MaxSlidingWindow()
+{
+	vector<int> nums = { 1,3,1,2,0,5 };
+	int k = 3;
+	vector<int> res = maxSlidingWindow(nums, k);
+	print<int>(res);
+
+}

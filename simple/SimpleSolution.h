@@ -91,36 +91,44 @@ string minWindow(string s, string t);
 /* 获取next数组 */
 /* next[i]指不包括当前字符的字符串的最大相同前后缀长度 */
 /* 当主串S与模式串P失配时，j=next[j]，P向右移动j - next[j] */
-void getNext(vector<int>& next, string& s)
-{
-	int len = s.size();
-	// j指向前缀末尾
-	int j = -1;
-	// 实际上是初始状态
-	next[0] = j;
+//void getNext(vector<int>& next, string& s)
+//{
+//	int len = s.size();
+//	// j指向前缀末尾
+//	int j = -1;
+//	// 实际上是初始状态
+//	next[0] = j;
+//
+//	// i指向后缀末尾，同时也指当前判断的子串的长度-1
+//	for (int i = 1; i < len; i++)
+//	{
+//		// 如果s[j + 1] != s[i]，则回退，next[j]表示j之前的最长公共前后缀
+//		// i在前进过程中遇到与前缀末尾j不匹配的字符，会导致前缀末尾j直接被撞回去
+//		// j停下来的地方，能保证s[j+1]是等于s[i]的，能保证此时以[0, j+1] = [i-(j + 1) ,i]
+//		while (j >= 0 && s[j + 1] != s[i])
+//		{
+//			// 状态回退
+//			j = next[j];
+//		}
+//		if (s[j + 1] == s[i])
+//		{
+//			// 匹配则前缀末尾后移
+//			j++;
+//		}
+//		// s[j + 1] = s[i]的情况，next[i] + 1就是最长长度
+//		// 否则就是-1 + 1 = 0
+//		next[i] = j;
+//	}
+//}
 
-	// i指向后缀末尾，同时也指当前判断的子串的长度-1
-	for (int i = 1; i < len; i++)
-	{
-		// 如果s[j + 1] != s[i]，则回退，next[j]表示j之前的最长公共前后缀
-		// i在前进过程中遇到与前缀末尾j不匹配的字符，会导致前缀末尾j直接被撞回去
-		// j停下来的地方，能保证s[j+1]是等于s[i]的，能保证此时以[0, j+1] = [i-(j + 1) ,i]
-		while (j >= 0 && s[j + 1] != s[i])
-		{
-			// 状态回退
-			j = next[j];
-		}
-		if (s[j + 1] == s[i])
-		{
-			// 匹配则前缀末尾后移
-			j++;
-		}
-		// s[j + 1] = s[i]的情况，next[i] + 1就是最长长度
-		// 否则就是-1 + 1 = 0
-		next[i] = j;
-	}
-	
+/* 查找子串 */
+int strStr(string haystack, string needle);
 
-}
+/* 栈和队列 */
+
+/* 滑动窗口内的最大值 */
+/**  单调队列 */
+vector<int> maxSlidingWindow(vector<int>& nums, int k);
+
 
 #endif // __SOLUTION_H__

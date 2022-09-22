@@ -14,6 +14,24 @@ struct TreeNode
 	TreeNode* right;
 };
 
+/* 涉及到树的题目一般有两种解法 
+ * 1. 递归
+ * *  确定递归参数和返回值
+ * *  确定终止条件
+ * *  确定单层递归的逻辑
+ *  
+ * 2. 迭代
+ * *  栈和队列
+*/
+
+/* 非递归的前中后序遍历 */
+vector<int> preOrderTraverseStack(TreeNode* root);
+vector<int> inOrderTraverseStack(TreeNode* root);
+vector<int> postOrderTraverseStack(TreeNode* root);
+
+/* 二叉树高度 */
+
+
 /*
  * 反序列化二叉树
  */
@@ -30,6 +48,8 @@ vector<int> postOrderTraverse(TreeNode* root);
  */
 TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder);
 
+
+
 /*
  *  最大路径和
  *  https://leetcode.cn/problems/binary-tree-maximum-path-sum/
@@ -42,6 +62,8 @@ int maxPathSum(TreeNode* root);
  *  https://leetcode.cn/problems/sum-root-to-leaf-numbers/
  */
 int sumNumbers(TreeNode* root);
+
+
 
 #endif // !__TREE_SOLUTION_H__
 
