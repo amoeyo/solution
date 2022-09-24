@@ -93,6 +93,18 @@ TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder)
 	return root;
 }
 
+vector<int> preOrderTraverseStack(TreeNode* root)
+{
+	if (!root) return {};
+	vector<int> res;
+	stack<TreeNode*> nodeStack;
+	nodeStack.push(root);
+	while (!nodeStack.empty())
+	{
+
+	}
+}
+
 //递归，更新每个节点的最大贡献值和最大路径和
 int maxPathSum_recursion(TreeNode* curNode, int& max_sum)
 {

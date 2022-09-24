@@ -263,3 +263,10 @@ int longestCommonSubsequence(string text1, string text2)
     }
     return dp[textLen2][textLen1];
 }
+
+// dp[i][j]表示以matrix[i][j]为右下角的最大正方形大小
+// dp[i][j] = min(dp[i - 1][j - 1], dp[i - 1][j], dp[i][j - 1]) + 1
+int maximalSquare(vector<vector<char>>& matrix)
+{
+
+}
