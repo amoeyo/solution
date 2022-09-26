@@ -29,6 +29,8 @@ vector<int> preOrderTraverseStack(TreeNode* root);
 vector<int> inOrderTraverseStack(TreeNode* root);
 vector<int> postOrderTraverseStack(TreeNode* root);
 
+TreeNode* getNode(TreeNode* root, int val);
+
 /* 二叉树高度 */
 
 
@@ -63,7 +65,24 @@ int maxPathSum(TreeNode* root);
  */
 int sumNumbers(TreeNode* root);
 
+/*
+ *  最大二叉树
+ *  https://leetcode.cn/problems/maximum-binary-tree/
+ */
+TreeNode* constructMaximumBinaryTree(vector<int>& nums);
 
+
+/*
+ *  合并二叉树
+ *  
+ */
+TreeNode* mergeTrees(TreeNode* root1, TreeNode* root2);
+
+/*
+ *  最近公共祖先
+ *  https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/
+ */
+TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q);
 
 #endif // !__TREE_SOLUTION_H__
 

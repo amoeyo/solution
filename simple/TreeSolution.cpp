@@ -36,6 +36,15 @@ TreeNode* createTree(vector<int>& nodes)
 	return root;
 }
 
+TreeNode* getNode(TreeNode* root, int val)
+{
+	if (!root) return nullptr;
+	if (root->val == val) return root;
+	TreeNode* left = getNode(root->left, val);
+	TreeNode* right = getNode(root->right, val);
+	return (left != nullptr) ? left : ((right != nullptr) ? right : nullptr);
+}
+
 //非递归
 vector<int> postOrderTraverse(TreeNode* root)
 {
@@ -98,11 +107,41 @@ vector<int> preOrderTraverseStack(TreeNode* root)
 	if (!root) return {};
 	vector<int> res;
 	stack<TreeNode*> nodeStack;
+	
 	nodeStack.push(root);
 	while (!nodeStack.empty())
 	{
-
+		TreeNode* node = nodeStack.top();
+		res.push_back(node->val);
+		nodeStack.pop();
+		if (node->right) nodeStack.push(node->right);
+		if (node->left) nodeStack.push(node->left);
 	}
+	return res;
+}
+
+vector<int> inOrderTraverseStack(TreeNode* root)
+{
+	if (!root) return {};
+	vector<int> res;
+	stack<TreeNode*> nodeStack;
+	TreeNode* cur = root;
+	while (cur || !nodeStack.empty())
+	{
+		if (cur)
+		{
+			nodeStack.push(cur);
+			cur = cur->left;
+		}
+		else
+		{
+			cur = nodeStack.top();
+			res.push_back(cur->val);
+			nodeStack.pop();
+			cur = cur->right;
+		}	
+	}
+	return res;
 }
 
 //递归，更新每个节点的最大贡献值和最大路径和
@@ -188,3 +227,65 @@ int sumNumbers(TreeNode* root)
 
 }
 
+TreeNode* constructTree(vector<int>& nums, int left, int right)
+{
+	if (left < 0 || right >= nums.size() || left > right) return nullptr;
+	int max_num = nums[left];
+	int cur = left;
+	for (int index = left + 1; index <= right; index++)
+	{
+		if (nums[index] > max_num)
+		{
+			max_num = nums[index];
+			cur = index;
+		}
+	}
+	TreeNode* node = new TreeNode(max_num);
+	node->left = constructTree(nums, left, cur - 1);
+	node->right = constructTree(nums, cur + 1, right);
+	return node;
+}
+
+TreeNode* constructMaximumBinaryTree(vector<int>& nums) {
+	TreeNode* root = constructTree(nums, 0, nums.size() - 1);
+	return root;
+}
+
+TreeNode* mergeTrees(TreeNode* root1, TreeNode* root2) 
+{
+	if (!root1 && !root2) return nullptr;
+	if (!root1 && root2) return root2;
+	if (root1 && !root2) return root1;
+	root1->val += root2->val;
+	root1->left = mergeTrees(root1->left, root2->left);
+	root1->right = mergeTrees(root1->right, root2->left);
+	return root1;
+}
+
+bool isExist(TreeNode* root, TreeNode* p)
+{
+	if (!root) return false;
+	if (root == p) return true;
+	return isExist(root->left, p) || isExist(root->right, p);
+}
+
+TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q)
+{
+	if (!root) return nullptr;
+	bool pLeftExist = isExist(root->left, p);
+	bool pRightExist = isExist(root->right, p);
+	bool qLeftExist = isExist(root->left, q);
+	bool qRightExist = isExist(root->right, q);
+
+	if (((root == p) && (qLeftExist || qRightExist))
+			|| ((root == q) && (pLeftExist || pRightExist))
+			|| (pLeftExist && qRightExist)
+			|| (pRightExist && qLeftExist))
+		return root;
+	TreeNode* node = nullptr;
+	if (pLeftExist && qLeftExist) node = lowestCommonAncestor(root->left, p, q);
+	if (pRightExist && qRightExist) node = lowestCommonAncestor(root->right, p, q);
+	if (node) return node;
+	return nullptr;
+	
+}
