@@ -268,5 +268,5 @@ int longestCommonSubsequence(string text1, string text2)
 // dp[i][j] = min(dp[i - 1][j - 1], dp[i - 1][j], dp[i][j - 1]) + 1
 int maximalSquare(vector<vector<char>>& matrix)
 {
-
+    return 0;
 }

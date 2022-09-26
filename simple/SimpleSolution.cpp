@@ -598,3 +598,43 @@ vector<int> maxSlidingWindow(vector<int>& nums, int k)
     
     
 }
+
+vector<int> missingTwo(vector<int>& nums)
+{
+    int len = nums.size();
+    for (int i = 0; i < len; i++)
+    {
+        while (nums[i] <= len && nums[i] >= 1 && nums[nums[i] - 1] != nums[i])
+        {
+            swap(nums[nums[i] - 1], nums[i]);
+        }
+    }
+
+    vector<int> res;
+    int index = 0;
+    while (index < len)
+    {
+        if (index < len && nums[index] != index + 1)
+        {
+            res.push_back(index + 1);
+        }
+        index++;
+    }
+
+    if (res.size() == 1)
+    {
+        if (nums[res[0] - 1] == index + 1)
+            res.push_back(index + 2);
+        if (nums[res[0] - 1] == index + 2)
+            res.push_back(index + 1);
+    }
+
+
+    if (res.size() == 0)
+    {
+        res = { 2, 3 };
+    }
+
+
+    return res;
+}

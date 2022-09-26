@@ -25,6 +25,7 @@ void UT_MaxNumber();
 void UT_StrStr();
 void UT_MaxSlidingWindow();
 void UT_TreeStackTraverse();
+void UT_MissingTwo();
 
 
 

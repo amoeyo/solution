@@ -130,5 +130,11 @@ int strStr(string haystack, string needle);
 /**  单调队列 */
 vector<int> maxSlidingWindow(vector<int>& nums, int k);
 
+/* 哈希 */
+/** 原地哈希 */
+/** 缺失的两个正数 */
+vector<int> missingTwo(vector<int>& nums);
+
+
 
 #endif // __SOLUTION_H__

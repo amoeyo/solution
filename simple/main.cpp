@@ -18,6 +18,8 @@ int main()
 	//UT_TotalFruit();
 	//UT_MaxNumber();
 	//UT_StrStr();
-	UT_MaxSlidingWindow();
+	//UT_MaxSlidingWindow();
+	UT_MissingTwo();
+	
 	return 0;
 }
