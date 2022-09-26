@@ -49,5 +49,10 @@ vector<string> generateParenthesis(int n);
 int longestCommonSubsequence(string text1, string text2);
 
 
+/* 二维dp */
+/* 最大正方形 */
+int maximalSquare(vector<vector<char>>& matrix);
+
+
 #endif // !__DPSOLUTION_H__
 

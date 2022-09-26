@@ -141,3 +141,33 @@ void UT_MaxSlidingWindow()
 	print<int>(res);
 
 }
+
+void UT_TreeStackTraverse()
+{
+
+}
+
+void UT_MissingTwo()
+{
+	vector<int> nums = {1,3,4,5,6,7,8,9};
+	vector<int> res = missingTwo(nums);
+	print<int>(res);
+}
+
+void UT_ConstructMaximumBinaryTree()
+{
+	vector<int> nums = { 3,2,1,6,0,5 };
+	TreeNode* root = constructMaximumBinaryTree(nums);
+	vector<int> res = inOrderTraverseStack(root);
+	print<int>(res);
+}
+
+void UT_LowestCommonAncestor()
+{
+	vector<int> nums = { 1, 2 };
+	TreeNode* root = createTree(nums);
+	TreeNode* p = getNode(root, 1);
+	TreeNode* q = getNode(root, 2);
+	TreeNode* node = lowestCommonAncestor(root, p, q);
+	cout << node->val;
+}
