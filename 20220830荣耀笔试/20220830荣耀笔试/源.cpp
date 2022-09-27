@@ -149,55 +149,56 @@ bool isReplace(string ans, string stu)
 	return false;
 }
 
+/** 对学生答案中的单词可以进行添加（但总分-2），删除（总分-1），
+	修改（总分-1，且要修改的单词包含对应标准答案的单词中的字母的个数多于后者的一半），
+	得分为在修改规则下将学生答案修改为标准答案所扣除的分数  + 标准答案的单词数 */
+
+int calPoint(vector<string>& answer, vector<string>& stu)
+{
+	int ans_num = answer.size();
+	int stu_num = stu.size();
+	vector<vector<int>> dp(ans_num + 1, vector<int>(stu_num + 1, 0));
+	dp[0][0] = 0;
+	for (int row = 1; row <= ans_num; row++)
+	{
+		dp[row][0] = dp[row - 1][0] + 2;
+	}
+	for (int col = 1; col <= stu_num; col++)
+	{
+		dp[0][col] = dp[0][col - 1] + 1;
+	}
+
+	for (int row = 1; row <= ans_num; row++)
+	{
+		for (int col = 1; col <= stu_num; col++)
+		{
+			if (answer[row - 1] == stu[col - 1])
+			{
+				dp[row][col] = dp[row - 1][col - 1];
+			}
+			else if (isReplace(answer[row - 1], stu[col - 1]))
+			{
+				dp[row][col] = dp[row - 1][col - 1] + 1;
+			}
+			else
+			{
+				dp[row][col] = dp[row - 1][col - 1] + 3;
+			}
+			dp[row][col] = min(dp[row][col], dp[row - 1][col] + 1);
+			dp[row][col] = min(dp[row][col], dp[row][col - 1] + 2);
+		}
+	}
+
+	return ans_num - dp[ans_num - 1][stu_num - 1];
+}
 
 int main()
 {
 	vector<string> answer = { "today", "is", "a", "good", "day" };
 	vector<string> stu = { "is", "a", "dog", "day", "too" };
 
-	int totalPoint = answer.size();
-
-	int res = totalPoint;
-
-	vector<bool> visitStu;
-	visitStu.assign(stu.size(), false);
-	vector<bool> visitAns;
-	visitAns.assign(totalPoint, false);
-
-
-
-
-	//先找正确的单词
-	for (int i = 0; i < stu.size(); i++)
-	{
-		//stu[i]
-		for(int j = 0; j < totalPoint; j++)
-		{
-			if (stu[i] == answer[j] && !visitAns[j])
-			{
-				visitAns[j] = true;
-				visitStu[i] = true;
-			}
-		}
-	}
-
-	//对于未查找过的ans和未查找过的stu，判断替换
-	for (int i = 0; i < stu.size(); i++)
-	{
-		if (visitStu[i]) continue;
-		//stu[i]
-		for (int j = 0; j < totalPoint; j++)
-		{
-			if (visitAns[j]) continue;
-			//对stu[i]和answer[j]进行判断
-			if (isReplace(answer[j], stu[i]))
-			{
-				visitAns[j] = true;
-				visitStu[i] = true;
-				res--;
-			}
-		}
-	}
+	int res = calPoint(answer, stu);
+	cout << res;
 
 	//判断
 

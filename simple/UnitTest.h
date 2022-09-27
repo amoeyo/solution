@@ -28,7 +28,7 @@ void UT_TreeStackTraverse();
 void UT_MissingTwo();
 void UT_ConstructMaximumBinaryTree();
 void UT_LowestCommonAncestor();
-
+void UT_DeleteNode();
 
 
 #endif // !__UNIT_TEST_H__

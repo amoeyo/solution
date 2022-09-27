@@ -171,3 +171,15 @@ void UT_LowestCommonAncestor()
 	TreeNode* node = lowestCommonAncestor(root, p, q);
 	cout << node->val;
 }
+
+void UT_DeleteNode()
+{
+	vector<int> nums = { 5,3,7,INF,4,6,8 };
+	TreeNode* root = createTree(nums);
+	vector<int> tree = inOrderTraverseStack(root);
+	print<int>(tree);
+	root = deleteNode(root, 5);
+	vector<int> res = inOrderTraverseStack(root);
+	print<int>(res);
+
+}

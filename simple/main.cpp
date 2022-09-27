@@ -21,7 +21,8 @@ int main()
 	//UT_MaxSlidingWindow();
 	//UT_MissingTwo();
 	//UT_ConstructMaximumBinaryTree();
-	UT_LowestCommonAncestor();
+	//UT_LowestCommonAncestor();
+	UT_DeleteNode();
 
 	return 0;
 }

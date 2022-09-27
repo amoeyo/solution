@@ -289,3 +289,43 @@ TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q)
 	return nullptr;
 	
 }
+
+TreeNode* deleteNode(TreeNode* root, int key)
+{
+	if (!root) return nullptr;
+	if (key < root->val)
+	{
+		root->left = deleteNode(root->left, key);
+	}
+	else if (key > root->val)
+	{
+		root->right = deleteNode(root->right, key);
+	}
+	else
+	{
+		if (root->left && root->right)
+		{
+			TreeNode* cur = root->right;
+			while (cur->left)
+			{
+				cur = cur->left;
+			}
+			swap(root->val, cur->val);
+			root->right = deleteNode(root->right, key);
+		}
+		else if (root->left)
+		{
+			return root->left;
+		}
+		else if (root->right)
+		{
+			return root->right;
+		}
+		else //р╤вс╫А╣Ц
+		{
+			root = nullptr;
+		}
+	}
+	
+	return root;
+}

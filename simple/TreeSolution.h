@@ -84,5 +84,11 @@ TreeNode* mergeTrees(TreeNode* root1, TreeNode* root2);
  */
 TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q);
 
+/*
+ *  删除平衡二叉树的结点
+ *
+ */
+TreeNode* deleteNode(TreeNode* root, int key);
+
 #endif // !__TREE_SOLUTION_H__
 
