@@ -29,6 +29,7 @@ void UT_MissingTwo();
 void UT_ConstructMaximumBinaryTree();
 void UT_LowestCommonAncestor();
 void UT_DeleteNode();
+void UT_MaxProfit();
 
 
 #endif // !__UNIT_TEST_H__

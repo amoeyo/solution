@@ -183,3 +183,10 @@ void UT_DeleteNode()
 	print<int>(res);
 
 }
+
+void UT_MaxProfit()
+{
+	vector<int> prices = { 7,1,5,3,6,4 };
+	int maxP = maxProfit(prices);
+	cout << maxP;
+}

@@ -22,7 +22,7 @@ int main()
 	//UT_MissingTwo();
 	//UT_ConstructMaximumBinaryTree();
 	//UT_LowestCommonAncestor();
-	UT_DeleteNode();
-
+	//UT_DeleteNode();
+	UT_MaxProfit();
 	return 0;
 }
