@@ -4,7 +4,7 @@ int maxProfit(vector<int>& prices)
 {
     //贪心，从左往右最小值，从右往左最大值
     
-    
+    return 0;
 }
 
 int lengthOfLIS(vector<int>& nums)

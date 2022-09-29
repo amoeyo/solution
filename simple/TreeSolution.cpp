@@ -329,3 +329,36 @@ TreeNode* deleteNode(TreeNode* root, int key)
 	
 	return root;
 }
+
+TreeNode* convertBST(TreeNode* root)
+{
+	stack<TreeNode*> node_stack;
+	vector<TreeNode*> result_vec;
+	TreeNode* cur = root;
+	//node_stack.push(cur);
+	while (cur || !node_stack.empty())
+	{
+		if (cur)
+		{
+			node_stack.push(cur);
+			cur = cur->left;
+		}
+		else
+		{
+			cur = node_stack.top();
+			result_vec.push_back(cur);
+			node_stack.pop();
+			cur = cur->right;
+		}
+	}
+	reverse(result_vec.begin(), result_vec.end());
+	auto it = result_vec.begin();
+	int sum = 0;
+	while (it != result_vec.end())
+	{
+		sum += (*it)->val;
+		(*it)->val = sum;
+		it++;
+	}
+	return root;
+}

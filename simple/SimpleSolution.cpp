@@ -638,3 +638,72 @@ vector<int> missingTwo(vector<int>& nums)
 
     return res;
 }
+
+int wiggleMaxLength(vector<int>& nums) {
+    int len = nums.size();
+    if (len <= 1) return 1;
+    int status = 0;
+    int res = 0;
+    if (nums[1] - nums[0] > 0)
+    {
+        status = 1;
+        res = 2;
+    }
+    else if (nums[1] - nums[0] < 0)
+    {
+        status = 0;
+        res = 2;
+    }
+    else
+    {
+        status = 3;
+        res = 1;
+    }
+
+    int left = 1, right = 2;
+    while (right < len)
+    {
+        if (nums[right] - nums[left] > 0)
+        {
+            if (status == 0)
+            {
+                res++;
+                left = right;
+                right++;
+                status = 1;
+            }
+            else if(status == 1)
+            {
+                right++;
+                status = 1;
+            }
+            else
+            {
+                right++;
+                status = 3;
+            }
+        }
+        else if (nums[right] - nums[left] < 0)
+        {
+            if (status == 1)
+            {
+                res++;
+                left = right;
+                right++;
+                status = 0;
+            }
+            else
+            {
+                right++;
+                status = 0;
+            }
+        }
+        else
+        {
+            right++;
+            status = 3;
+        }
+    }
+
+    return res;
+}

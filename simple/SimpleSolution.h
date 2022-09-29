@@ -136,5 +136,8 @@ vector<int> maxSlidingWindow(vector<int>& nums, int k);
 vector<int> missingTwo(vector<int>& nums);
 
 
+/* 贪心 */
+/** 最大摆动序列 */
+int wiggleMaxLength(vector<int>& nums);
 
 #endif // __SOLUTION_H__

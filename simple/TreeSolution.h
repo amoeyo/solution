@@ -90,5 +90,11 @@ TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q);
  */
 TreeNode* deleteNode(TreeNode* root, int key);
 
+/*
+ *  ÀÛ¼ÓÊ÷
+ *  https://leetcode.cn/problems/convert-bst-to-greater-tree/
+ */
+TreeNode* convertBST(TreeNode* root);
+
 #endif // !__TREE_SOLUTION_H__
 

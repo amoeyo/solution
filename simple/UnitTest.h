@@ -30,6 +30,8 @@ void UT_ConstructMaximumBinaryTree();
 void UT_LowestCommonAncestor();
 void UT_DeleteNode();
 void UT_MaxProfit();
+void UT_ConvertBST();
+void UT_WiggleMaxLength();
 
 
 #endif // !__UNIT_TEST_H__

@@ -190,3 +190,19 @@ void UT_MaxProfit()
 	int maxP = maxProfit(prices);
 	cout << maxP;
 }
+
+void UT_ConvertBST()
+{
+	vector<int> node = { 3,2,4,1 };
+	TreeNode* root = createTree(node);
+	TreeNode* newRoot = convertBST(root);
+	vector<int> res = inOrderTraverseStack(newRoot);
+	print<int>(res);
+}
+
+void UT_WiggleMaxLength()
+{
+	vector<int> nums = {3,3,3,2,5};
+	int res = wiggleMaxLength(nums);
+	cout << res;
+}

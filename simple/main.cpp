@@ -23,6 +23,8 @@ int main()
 	//UT_ConstructMaximumBinaryTree();
 	//UT_LowestCommonAncestor();
 	//UT_DeleteNode();
-	UT_MaxProfit();
+	//UT_MaxProfit();
+	//UT_ConvertBST();
+	UT_WiggleMaxLength();
 	return 0;
 }
